@@ -5,13 +5,14 @@ public class SimplePlatformController : MonoBehaviour
 {
 	public bool facingRight = true;
 	public bool jump = false;
+	public bool doubleJump = false;
 
 	public float moveForce = 365f;
 	public float maxSpeed = 5f;
 	public float jumpForce = 1000f;
 	public Transform groundCheck;
 
-	private bool grounded = false;
+	private bool grounded;
 	private Animator anim;
 	private Rigidbody2D rb2d;
 
@@ -36,6 +37,11 @@ public class SimplePlatformController : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		if (grounded) 
+		{
+			doubleJump = false;
+		}
+
 		float h = Input.GetAxis ("Horizontal");
 		//Stops from getting a negative speed and screwing up calculations
 		anim.SetFloat ("Speed", Mathf.Abs (h));
@@ -62,6 +68,14 @@ public class SimplePlatformController : MonoBehaviour
 			anim.SetTrigger ("Jump");
 			rb2d.AddForce(new Vector2(0f, jumpForce));
 			jump = false;
+		}
+
+		//Double Jump
+		if (Input.GetButtonDown("Jump") && !grounded && !doubleJump) 
+		{
+			anim.SetTrigger ("Jump");
+			rb2d.AddForce(new Vector2(0f, jumpForce));
+			doubleJump = true;
 		}
 	}
 

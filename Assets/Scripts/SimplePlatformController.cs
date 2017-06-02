@@ -19,7 +19,7 @@ public class SimplePlatformController : MonoBehaviour
 	void Awake () 
 	{
 		anim = GetComponent<Animator> ();
-		rb2d = GetComponent<Rigidbody2d> ();
+		rb2d = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
@@ -49,7 +49,19 @@ public class SimplePlatformController : MonoBehaviour
 		if (Mathf.Abs (rb2d.velocity.x) > maxSpeed) 
 		{
 			//Mathf.Sign returns -1 or 1 depending on the sign of the input
-			rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x));
+			rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
+		}
+
+		if (h > 0 && !facingRight)
+			Flip ();
+		else if (h < 0 && facingRight)
+			Flip ();
+
+		if (jump) 
+		{
+			anim.SetTrigger ("Jump");
+			rb2d.AddForce(new Vector2(0f, jumpForce));
+			jump = false;
 		}
 	}
 

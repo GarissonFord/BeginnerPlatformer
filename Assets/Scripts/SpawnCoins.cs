@@ -6,6 +6,7 @@ public class SpawnCoins : MonoBehaviour {
 
 	public Transform[] coinSpawns;
 	public GameObject coin;
+	public GameObject enemy;
 
 	// Use this for initialization
 	void Start () 
@@ -18,9 +19,13 @@ public class SpawnCoins : MonoBehaviour {
 		for (int i = 0; i < coinSpawns.Length; i++) 
 		{
 			int coinFlip = Random.Range (0, 2);
-			if (coinFlip > 0) 
+			if (coinFlip > 0)
 			{
 				Instantiate (coin, coinSpawns [i].position, Quaternion.identity);
+			} 
+			else
+			{
+				Instantiate (enemy, coinSpawns [i].position, Quaternion.identity);
 			}
 		}
 	}

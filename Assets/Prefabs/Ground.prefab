@@ -54,7 +54,6 @@ GameObject:
   - component: {fileID: 61147397428801970}
   - component: {fileID: 50249554291085498}
   - component: {fileID: 114351304104306374}
-  - component: {fileID: 114184632979909894}
   - component: {fileID: 114699004636807262}
   m_Layer: 12
   m_Name: Ground
@@ -217,19 +216,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114184632979909894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851004427006030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52512376a3830463e8424506531aa014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinSpawns: []
-  coin: {fileID: 0}
 --- !u!114 &114351304104306374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,3 +244,4 @@ MonoBehaviour:
   - {fileID: 4570472909985126}
   - {fileID: 4220746761647212}
   coin: {fileID: 1346200684947998, guid: adbe6f3a9bf7247588acc15e3c73d21d, type: 2}
+  enemy: {fileID: 100000, guid: 4c5736ea0764d49c3a6adc2250d33f0f, type: 2}
